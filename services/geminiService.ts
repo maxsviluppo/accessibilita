@@ -1,11 +1,8 @@
 import { GoogleGenAI } from "@google/genai";
 
-const apiKey = process.env.API_KEY || '';
-const ai = new GoogleGenAI({ apiKey });
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const askGeminiAssistant = async (topic: string, query: string): Promise<string> => {
-  if (!apiKey) return "API Key non configurata. Impossibile contattare l'assistente.";
-
   try {
     const model = "gemini-2.5-flash";
     const prompt = `
